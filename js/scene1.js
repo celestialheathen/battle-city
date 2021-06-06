@@ -7,6 +7,7 @@ class Scene1 extends Phaser.Scene {
 
   preload() {
     this.load.image('bg', 'assets/map.jpeg')
+    this.load.spritesheet('items', 'assets/general.png', {frameWidth: 16, frameHeight: 16})
     this.load.spritesheet('tank', 'assets/general.png', {frameWidth: 16, frameHeight: 16})
   }
 
@@ -22,6 +23,10 @@ class Scene1 extends Phaser.Scene {
     this.anims.create({key: 'explode', frames: this.anims.generateFrameNames('tank', {start: 216, end: 219})})
 
     this.tank = new Tank({scene: this, x: 300, y: 200, key: 'tank'})
+
+    this.helmet = this.add.sprite(160, 160, 'items')
+    this.helmet.frame = 5
+
 
     this.cursors = this.input.keyboard.createCursorKeys()
     this.explodeKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE)
